@@ -2,40 +2,50 @@ package com.arnesi.wumpus.application;
 
 import java.util.Scanner;
 
-import com.arnesi.wumpus.model.Board;
-import com.arnesi.wumpus.model.Hunter;
+import com.arnesi.wumpus.gamelogic.Board;
 import com.arnesi.wumpus.view.DrawUserInterface;
 
-public class WumpusGame {
-	private final Board board;
-	private final Hunter hunter;
 
-	public WumpusGame(Board board, Hunter hunter) {
-		this.board = board;
-		this.hunter = hunter;
+/**
+ * Hunt the Wumpus Coding Exercise
+ * Application start point
+ * 	
+ * @author MArnesi
+ *
+ */
+
+public class WumpusGame {
+
+	public static void main(String[] args) {
+		new WumpusGame().startGame();
 	}
 
-	public void startGame() {
-		boolean gameRunning = true;
-		Scanner userInput = new Scanner(System.in);
+	private void startGame() {
+		final Scanner userInput = new Scanner(System.in);
+
+		final Board board = new Board(4, 4, 1);
+		board.initializeBoard();
 
 		DrawUserInterface.drawBanner();
 		DrawUserInterface.drawCommands();
 
+		boolean gameRunning = true;
 		while (gameRunning) {
-
 			System.out.print("$> ");
 			String input = userInput.nextLine().toUpperCase();
 
 			switch (input) {
 			case "GF":
 				System.out.println("ACTION: Hunter go forward...");
+				board.hunterActions("GO_FORWARD");
 				break;
 			case "TL":
 				System.out.println("ACTION: Hunter turn 90º to the left...");
+				board.hunterActions("TURN_LEFT");
 				break;
 			case "TR":
 				System.out.println("ACTION: Hunter turn 90º to the right...");
+				board.hunterActions("TURN_RIGHT");
 				break;
 			case "SHOOT":
 				System.out.println("ACTION: Hunter shoot one arrow!");
@@ -47,7 +57,6 @@ public class WumpusGame {
 				DrawUserInterface.drawCommands();
 				break;
 			case "INSTRUCTIONS":
-				//TODO Add game Instructions
 				break;
 			case "ENDGAME":
 				System.out.println("Exiting game! goodbye....");

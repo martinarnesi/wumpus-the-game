@@ -1,12 +1,12 @@
 package com.arnesi.wumpus.view;
 
 public final class DrawUserInterface {
-	
+
 	public static void drawBanner() {
 		System.out.println("Hunt the Wumpus!"); //Create in View
 		System.out.println("");
 	}
-	
+
 	public static void drawCommands() {
 		System.out.println("Console Commands"); 
 		System.out.println("GF --> Hunter go forward.");
@@ -18,8 +18,8 @@ public final class DrawUserInterface {
 		System.out.println("INSTRUCTIONS --> Show game instructions.");
 		System.out.println("ENDGAME --> Quit Game.");
 	}
-	
+
 	private DrawUserInterface() {
-		
+
 	}
 }
