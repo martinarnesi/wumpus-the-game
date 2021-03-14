@@ -2,12 +2,12 @@ package com.arnesi.wumpus.model;
 
 import com.arnesi.wumpus.parameters.GameParameters.EntityType;
 
-public class Gold extends Entity {
+public class CaveExit extends Entity {
 	private int xPosition;
 	private int yPosition;
 
-	public Gold(int xPosition, int yPosition) {
-		super(EntityType.GOLD);
+	public CaveExit(int xPosition, int yPosition) {
+		super(EntityType.CAVE_EXIT);
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 	}
@@ -22,6 +22,6 @@ public class Gold extends Entity {
 
 	@Override
 	public String toString() {
-		return "Gold";
+		return "CaveExit";
 	}
 }

@@ -1,6 +1,6 @@
-package com.arnesi.wumpus.view;
+package com.arnesi.wumpus.utils;
 
-public final class DrawUserInterface {
+public final class UserInterfaceUtils {
 
 	public static void drawBanner() {
 		System.out.println("Hunt the Wumpus!"); //Create in View
@@ -18,8 +18,12 @@ public final class DrawUserInterface {
 		System.out.println("INSTRUCTIONS --> Show game instructions.");
 		System.out.println("ENDGAME --> Quit Game.");
 	}
+	
+	public static void printString(String string) {
+		System.out.println(string);
+	}
 
-	private DrawUserInterface() {
+	private UserInterfaceUtils() {
 
 	}
 }

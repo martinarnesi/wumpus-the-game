@@ -2,8 +2,13 @@ package com.arnesi.wumpus.application;
 
 import java.util.Scanner;
 
-import com.arnesi.wumpus.gamelogic.Board;
-import com.arnesi.wumpus.view.DrawUserInterface;
+import com.arnesi.wumpus.gamelogic.BoardGame;
+import com.arnesi.wumpus.gamelogic.HunterActionsEnum;
+import static com.arnesi.wumpus.utils.UserInterfaceUtils.drawBanner;
+import static com.arnesi.wumpus.utils.UserInterfaceUtils.drawCommands;
+import static com.arnesi.wumpus.utils.UserInterfaceUtils.printString;
+
+
 
 
 /**
@@ -23,11 +28,11 @@ public class WumpusGame {
 	private void startGame() {
 		final Scanner userInput = new Scanner(System.in);
 
-		final Board board = new Board(4, 4, 1);
-		board.initializeBoard();
+		final BoardGame board = new BoardGame();
+		board.initializeBoardGame();
 
-		DrawUserInterface.drawBanner();
-		DrawUserInterface.drawCommands();
+		drawBanner();
+		drawCommands();
 
 		boolean gameRunning = true;
 		while (gameRunning) {
@@ -36,35 +41,41 @@ public class WumpusGame {
 
 			switch (input) {
 			case "GF":
-				System.out.println("ACTION: Hunter go forward...");
-				board.hunterActions("GO_FORWARD");
+				printString("ACTION: Hunter go forward...");
+				board.boardActions(HunterActionsEnum.GO_FORWARD);
 				break;
 			case "TL":
-				System.out.println("ACTION: Hunter turn 90º to the left...");
-				board.hunterActions("TURN_LEFT");
+				printString("ACTION: Hunter turn 90º to the left...");
+				board.boardActions(HunterActionsEnum.TURN_LEFT);
 				break;
 			case "TR":
-				System.out.println("ACTION: Hunter turn 90º to the right...");
-				board.hunterActions("TURN_RIGHT");
+				printString("ACTION: Hunter turn 90º to the right...");
+				board.boardActions(HunterActionsEnum.TURN_RIGHT);
 				break;
 			case "SHOOT":
-				System.out.println("ACTION: Hunter shoot one arrow!");
+				printString("ACTION: Hunter shoot one arrow!");
+				board.boardActions(HunterActionsEnum.SHOOT);
 				break;
 			case "EXIT":
-				System.out.println("ACTION: Hunter exit");
+				printString("ACTION: Hunter tries to exit....");
+				if (board.boardActions(HunterActionsEnum.EXIT)) {
+					printString("Tou WIN. Game Over");
+					gameRunning = false;
+					userInput.close();
+				}
 				break;
-			case "ACTIONS":
-				DrawUserInterface.drawCommands();
+			case "COMMANDS":
+				drawCommands();
 				break;
 			case "INSTRUCTIONS":
 				break;
 			case "ENDGAME":
-				System.out.println("Exiting game! goodbye....");
+				printString("Exiting game! goodbye....");
 				gameRunning = false;
 				userInput.close();
 				break;
 			default:
-				System.out.printf("Action %s is an invalid action! \n", input);
+				printString("Invalid Command");
 				break;
 			}
 			

@@ -2,12 +2,12 @@ package com.arnesi.wumpus.model;
 
 import com.arnesi.wumpus.parameters.GameParameters.EntityType;
 
-public class Gold extends Entity {
+public class Arrow extends Entity {
 	private int xPosition;
 	private int yPosition;
 
-	public Gold(int xPosition, int yPosition) {
-		super(EntityType.GOLD);
+	public Arrow(int xPosition, int yPosition) {
+		super(EntityType.ARROW);
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
 	}
@@ -16,12 +16,15 @@ public class Gold extends Entity {
 		return xPosition;
 	}
 
+	public void setxPosition(int xPosition) {
+		this.xPosition = xPosition;
+	}
+
 	public int getyPosition() {
 		return yPosition;
 	}
 
-	@Override
-	public String toString() {
-		return "Gold";
+	public void setyPosition(int yPosition) {
+		this.yPosition = yPosition;
 	}
 }

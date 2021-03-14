@@ -4,16 +4,16 @@ public final class GameParameters {
 	/* 
 	 * Basic Board Parameters 
 	 */ 
-	public static final int PARAMETRISED_GOLD = 1;
-	public static final int PARAMETRISED_WUMPUS = 1;
-	public static final int PARAMETRISED_HOLES = 2;
+	public static final int PARAMETRISED_BOARD_WIDTH= 4;
+	public static final int PARAMETRISED_BOARD_HEIGHT= 4;
+	public static final int PARAMETRISED_HOLES_QUANTITY = 3;
 	
 	/* 
 	 * Basic Hunter Parameters 
 	 */
 	public static final boolean HUNTER_ALIVE = true;
 	public static final boolean HUNTER_HAVE_GOLD = false;
-	public static final int HUNTER_AMOUT_ARROWS = 3;
+	public static final int HUNTER_AMOUT_ARROWS = 2;
 
     /* 
 	 * Game Entities 
@@ -23,23 +23,13 @@ public final class GameParameters {
 		WUMPUS,
 		HOLE,
 		GOLD,
+		ARROW,
 		WUNPUS_STENCH_PERCEPTION,
 		HOLES_BREEZE_PERCEPTION,
-		WALL_SHOCK_PERCEPTION,
 		WUMPUS_SCREAM_PERCEPTION,
+		CAVE_EXIT,
 		EMPTY
 	}
 
-    /* 
-   	 * Hunter Actions (TBD) 
-   	 */
-	public enum ActionEnum {
-		GO_FORWARD,
-		TURN_LEFT,
-		TURN_RIGHT,
-		SHOOT_ARROW,
-		EXIT
-	}
-
-	private GameParameters() {}
+    private GameParameters() {}
 }

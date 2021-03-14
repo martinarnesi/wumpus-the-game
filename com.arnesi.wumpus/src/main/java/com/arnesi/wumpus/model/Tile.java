@@ -62,6 +62,7 @@ public class Tile {
 
 	@Override
 	public String toString() {
-		return "Entity=" + entity + ", Cell Position X=" + rowPosition + ",Y=" + columnPosition + "]";
+//		return ""+ entity + " (X=" + rowPosition + "/Y=" + columnPosition +")";
+		return ""+ entity;
 	}
 }
