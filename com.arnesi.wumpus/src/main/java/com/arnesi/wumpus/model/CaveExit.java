@@ -22,6 +22,6 @@ public class CaveExit extends Entity {
 
 	@Override
 	public String toString() {
-		return "CaveExit";
+		return "I'm at the Cave Exit...";
 	}
 }

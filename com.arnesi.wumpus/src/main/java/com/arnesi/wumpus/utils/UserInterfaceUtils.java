@@ -20,7 +20,7 @@ public final class UserInterfaceUtils {
 	}
 	
 	public static void printString(String string) {
-		System.out.println(string);
+		System.out.println("Message: "+ string);
 	}
 
 	private UserInterfaceUtils() {

@@ -26,6 +26,6 @@ public class Hole extends Entity {
 
 	@Override
 	public String toString() {
-		return "Hole";
+		return "I'm falling into a Hole!!! Ahhhhhhhhhhh!!!!";
 	}
 }

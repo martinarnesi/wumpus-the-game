@@ -3,32 +3,35 @@ package com.arnesi.wumpus.model;
 import com.arnesi.wumpus.parameters.GameParameters;
 import com.arnesi.wumpus.parameters.GameParameters.EntityType;
 
-public class Hunter extends Entity{
-	//Positions and direction in 2D the board.
+public class Hunter extends Entity {
+	// Positions and direction in 2D the board.
 	private int xPosition;
 	private int yPosition;
-	private HunterDirectionEnum direction;
+	private HunterEnum direction;
 
-	private boolean isAlive = GameParameters.HUNTER_ALIVE;
-	private boolean haveGold = GameParameters.HUNTER_HAVE_GOLD;
-	private int amountOfArrows = GameParameters.HUNTER_AMOUT_ARROWS;
+	private boolean isAlive;
+	private boolean haveGold;
+	private int amountOfArrows;
 
 	public Hunter(int xPosition, int yPosition) {
 		super(EntityType.HUNTER);
 		this.xPosition = xPosition;
 		this.yPosition = yPosition;
-		this.direction = HunterDirectionEnum.UP;
+		this.direction = HunterEnum.UP;
+		this.isAlive = true;
+		this.haveGold = false;
+		this.amountOfArrows = 3;
 	}
 
 	public EntityType getEntityType() {
 		return super.entityType;
 	}
 
-	public HunterDirectionEnum getDirection() {
+	public HunterEnum getDirection() {
 		return direction;
 	}
 
-	public void setDirection(HunterDirectionEnum direction) {
+	public void setDirection(HunterEnum direction) {
 		this.direction = direction;
 	}
 
@@ -74,6 +77,6 @@ public class Hunter extends Entity{
 
 	@Override
 	public String toString() {
-		return "Hunter Direction:" + getDirection();
+		return "I'm looking at direction:" + getDirection();
 	}
 }

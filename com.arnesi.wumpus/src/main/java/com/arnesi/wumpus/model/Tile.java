@@ -62,7 +62,6 @@ public class Tile {
 
 	@Override
 	public String toString() {
-//		return ""+ entity + " (X=" + rowPosition + "/Y=" + columnPosition +")";
 		return ""+ entity;
 	}
 }

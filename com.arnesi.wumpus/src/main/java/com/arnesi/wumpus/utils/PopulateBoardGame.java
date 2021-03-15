@@ -7,6 +7,7 @@ import java.util.Objects;
 import com.arnesi.wumpus.exception.CreationException;
 import com.arnesi.wumpus.model.CaveExit;
 import com.arnesi.wumpus.model.EmptyTile;
+import com.arnesi.wumpus.model.Entity;
 import com.arnesi.wumpus.model.Gold;
 import com.arnesi.wumpus.model.Hole;
 import com.arnesi.wumpus.model.HoleBreeze;
@@ -21,22 +22,19 @@ public class PopulateBoardGame {
 		for (int i = 0; i < tileCave.length; i++) {
 			Tile[] tiles = tileCave[i];
 			for (int j = 0; j < tiles.length; j++) {
+				if(Objects.nonNull(tiles[j])) {
+					return false;
+				}
 				Tile tile = new Tile(i, j);
 				tile.addEntity(new EmptyTile(i, j));
 				tiles[j] = tile;
 			}
 		}
-
-		// TODO Validate that reset was ok (check array tiles arr all emptytiles
-
 		return true;
-
 	}
 
 	public Hunter setHunterInitialPosition(Hunter hunter, Tile[][] tile) {
-		if (Objects.nonNull(hunter)) {
-			throw new CreationException("Hunter creation error.");
-		}
+		checkIsEmpty(hunter);
 
 		hunter = new Hunter(3, 0);
 		tile[hunter.getxPosition()][hunter.getyPosition()].addEntity(hunter);
@@ -45,36 +43,32 @@ public class PopulateBoardGame {
 	}
 
 	public CaveExit setCaveExitPosition(CaveExit caveExit, Tile[][] tile) {
-		if (Objects.nonNull(caveExit)) {
-			throw new CreationException("CaveExit creation error.");
-		}
+		checkIsEmpty(caveExit);
 
 		caveExit = new CaveExit(3, 0);
 		tile[caveExit.getxPosition()][caveExit.getyPosition()].addEntity(caveExit);
 
 		return caveExit;
 	}
-	
+
 	public Gold setGoldPosition(Gold gold, Tile[][] tile) {
-		if (Objects.nonNull(gold)) {
-			throw new CreationException("Gold creation error.");
-		}
+		checkIsEmpty(gold);
 
 		gold = new Gold(1, 1);
 		tile[gold.getxPosition()][gold.getyPosition()].addEntity(gold);
 
 		return gold;
 	}
-	
+
 	public List<Hole> setHolePosition(List<Hole> holeList, int holeQuantity, Tile[][] tile) {
 		if (Objects.nonNull(holeList)) {
 			throw new CreationException("Hole creation error.");
 		}
-		
+
 		Hole hole;
 		holeList = new ArrayList<>();
 
-		switch(holeQuantity) {
+		switch (holeQuantity) {
 		case 3:
 			hole = new Hole(3, 2);
 			tile[hole.getxPosition()][hole.getyPosition()].addEntity(hole);
@@ -105,45 +99,20 @@ public class PopulateBoardGame {
 	}
 
 	public Wumpus setWumpusPosition(Wumpus wumpus, Tile[][] tile) {
-		if (Objects.nonNull(wumpus)) {
-			throw new CreationException("Wumpus creation error.");
-		}
+		checkIsEmpty(wumpus);
 
 		wumpus = new Wumpus(1, 0);
 		tile[wumpus.getxPosition()][wumpus.getyPosition()].addEntity(wumpus);
+		tile[0][0].addEntity(new WumpusStench());
+		tile[1][1].addEntity(new WumpusStench());
+		tile[2][0].addEntity(new WumpusStench());
 
 		return wumpus;
 	}
-	
-	public WumpusStench setWumpusStenchPosition(WumpusStench wumpusStench, Tile[][] tile) {
-		if (Objects.nonNull(wumpusStench)) {
-			throw new CreationException("WumpusStench creation error.");
+
+	private void checkIsEmpty(Entity entity) {
+		if (Objects.nonNull(entity)) {
+			throw new CreationException("Entity already exits. Creation error.");
 		}
-
-		wumpusStench = new WumpusStench(2, 0);
-		tile[wumpusStench.getxPosition()][wumpusStench.getyPosition()].addEntity(wumpusStench);
-
-		return wumpusStench;
 	}
-	
-	
-	
-
-	
-	
-	
-	//	public Entity setEntityPosition(Entity entity, int xPosition, int yPosition, Tile[][] tile) {
-//		if (Objects.nonNull(entity)) {
-//			throw new CreationException("Entity creation error.");
-//		}
-//
-//		if (entity instanceof Gold ) {
-//			entity = (Gold)new Gold(1, 1);
-//			tile[entity.getxPosition()][((Gold) entity).getyPosition()].addEntity(gold);
-//		}
-//		
-//
-//		return entity;
-//	}
-	
 }

@@ -5,5 +5,8 @@ public enum HunterActionsEnum {
 	TURN_LEFT,
 	TURN_RIGHT,
 	SHOOT,
-	EXIT
+	GOLD_FOUND,
+	GOLD_NOT_FOUND,
+	NO_EXIT,
+	EXIT;
 }

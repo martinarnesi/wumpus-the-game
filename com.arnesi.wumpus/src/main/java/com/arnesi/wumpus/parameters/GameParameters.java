@@ -7,13 +7,6 @@ public final class GameParameters {
 	public static final int PARAMETRISED_BOARD_WIDTH= 4;
 	public static final int PARAMETRISED_BOARD_HEIGHT= 4;
 	public static final int PARAMETRISED_HOLES_QUANTITY = 3;
-	
-	/* 
-	 * Basic Hunter Parameters 
-	 */
-	public static final boolean HUNTER_ALIVE = true;
-	public static final boolean HUNTER_HAVE_GOLD = false;
-	public static final int HUNTER_AMOUT_ARROWS = 2;
 
     /* 
 	 * Game Entities 

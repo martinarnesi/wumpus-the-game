@@ -1,6 +1,6 @@
 package com.arnesi.wumpus.model;
 
-public enum HunterDirectionEnum {
+public enum HunterEnum {
 	UP,
 	DOWN,
 	LEFT,

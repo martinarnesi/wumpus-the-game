@@ -9,6 +9,6 @@ public class HoleBreeze extends Entity {
 
 	@Override
 	public String toString() {
-		return "HoleBreeze";
+		return "I feel a Hole Breeze...";
 	}
 }

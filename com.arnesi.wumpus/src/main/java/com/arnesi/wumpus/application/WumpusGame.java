@@ -25,7 +25,7 @@ public class WumpusGame {
 		new WumpusGame().startGame();
 	}
 
-	private void startGame() {
+	public void startGame() {
 		final Scanner userInput = new Scanner(System.in);
 
 		final BoardGame board = new BoardGame();
@@ -42,7 +42,11 @@ public class WumpusGame {
 			switch (input) {
 			case "GF":
 				printString("ACTION: Hunter go forward...");
-				board.boardActions(HunterActionsEnum.GO_FORWARD);
+				if (!board.boardActions(HunterActionsEnum.GO_FORWARD)) {
+					printString("Your are DEAD! Game Over");
+					gameRunning = false;
+					userInput.close();
+				} 
 				break;
 			case "TL":
 				printString("ACTION: Hunter turn 90º to the left...");
@@ -59,9 +63,12 @@ public class WumpusGame {
 			case "EXIT":
 				printString("ACTION: Hunter tries to exit....");
 				if (board.boardActions(HunterActionsEnum.EXIT)) {
-					printString("Tou WIN. Game Over");
+					printString("CONGRATULATIONS!!! YOU WIN. GAME OVER");
 					gameRunning = false;
 					userInput.close();
+				} else {
+					printString("You are not at the exit or you did not find the gold."
+							+ " You can't leave the cave.");
 				}
 				break;
 			case "COMMANDS":
@@ -79,7 +86,7 @@ public class WumpusGame {
 				break;
 			}
 			
-			board.printBoard();
+//			board.printBoard();
 		}
 	}
 }

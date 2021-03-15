@@ -22,6 +22,6 @@ public class Gold extends Entity {
 
 	@Override
 	public String toString() {
-		return "Gold";
+		return "I found a Gold Ingot! Go to the exit to win!";
 	}
 }

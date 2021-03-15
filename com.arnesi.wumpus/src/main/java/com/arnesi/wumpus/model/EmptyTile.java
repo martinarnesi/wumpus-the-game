@@ -14,6 +14,6 @@ public class EmptyTile extends Entity {
 
 	@Override
 	public String toString() {
-		return "X="+ xPosition +"|Y="+ yPosition;
+		return "I'm in X="+ xPosition +"|Y="+ yPosition;
 	}
 }

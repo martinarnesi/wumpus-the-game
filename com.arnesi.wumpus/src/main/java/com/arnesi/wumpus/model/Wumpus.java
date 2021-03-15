@@ -32,6 +32,6 @@ public class Wumpus extends Entity {
 
 	@Override
 	public String toString() {
-		return "Wumpus";
+		return "Ohh my God, I see a Wumpus!!!";
 	}
 }
