@@ -2,7 +2,6 @@ package com.arnesi.wumpus.gamelogic;
 
 import static com.arnesi.wumpus.utils.UserInterfaceUtils.printString;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.arnesi.wumpus.exception.CreationException;
@@ -55,39 +54,39 @@ public class BoardGame {
 
 	public Boolean boardActions(HunterActionsEnum hunterAction) {
 		switch (hunterAction) {
-			case GO_FORWARD:
-				removeEntityPositionFromBoard(hunter);
-				printString(hunterActions.moveHunterForward(hunter, BOARD_WIDTH, BOARD_HEIGHT));
-				addEntityPositionToBoard(hunter);
-				
-				List<Entity> perceptions = hunterActions.hunterPerception(hunter, tileCave);
-				hunter = hunterActions.updateHunterStatus(hunter, perceptions, wumpus, gold);
-	
-				return hunter.isAlive();
-	
-			case TURN_LEFT:
-				hunterActions.turnHunter(hunterAction, hunter);
-				printString(HUNTER_DIRECTION + hunter.getDirection());
-				break;
-				
-			case TURN_RIGHT:
-				hunterActions.turnHunter(hunterAction, hunter);
-				printString(HUNTER_DIRECTION + hunter.getDirection());
-				break;
-				
-			case SHOOT:
-				printString("Not implemted in this version.");
-				break;
-				
-			case EXIT:
-				switch (hunterActions.hunterExitCave(hunter, tileCave, caveExit)) {
-					case GOLD_FOUND:
-						return true;
-					case GOLD_NOT_FOUND:
-					case NO_EXIT:
-						return false;
-					}
-				break;
+		case GO_FORWARD:
+			removeEntityPositionFromBoard(hunter);
+			printString(hunterActions.moveHunterForward(hunter, BOARD_WIDTH, BOARD_HEIGHT));
+			addEntityPositionToBoard(hunter);
+
+			List<Entity> perceptions = hunterActions.hunterPerception(hunter, tileCave);
+			hunter = hunterActions.updateHunterStatus(hunter, perceptions, wumpus, gold);
+
+			return hunter.isAlive();
+
+		case TURN_LEFT:
+			hunterActions.turnHunter(hunterAction, hunter);
+			printString(HUNTER_DIRECTION + hunter.getDirection());
+			break;
+
+		case TURN_RIGHT:
+			hunterActions.turnHunter(hunterAction, hunter);
+			printString(HUNTER_DIRECTION + hunter.getDirection());
+			break;
+
+		case SHOOT:
+			printString("Not implemted in this version.");
+			break;
+
+		case EXIT:
+			switch (hunterActions.hunterExitCave(hunter, tileCave, caveExit)) {
+			case GOLD_FOUND:
+				return true;
+			case GOLD_NOT_FOUND:
+			case NO_EXIT:
+				return false;
+			}
+			break;
 		}
 		return false;
 	}
@@ -95,16 +94,8 @@ public class BoardGame {
 	private void removeEntityPositionFromBoard(Entity entity) {
 		tileCave[hunter.getxPosition()][hunter.getyPosition()].removeEntity(entity);
 	}
-	
+
 	private void addEntityPositionToBoard(Entity entity) {
 		tileCave[hunter.getxPosition()][hunter.getyPosition()].addEntity(entity);
-	}
-
-	/* FOR DEBUGING PURPOSE */
-	public void printBoard() {
-		// Loop through all rows
-		for (Tile[] row : tileCave) {
-			printString(Arrays.toString(row));
-		}
 	}
 }

@@ -1,15 +1,13 @@
 package com.arnesi.wumpus.application;
 
-import java.util.Scanner;
-
-import com.arnesi.wumpus.gamelogic.BoardGame;
-import com.arnesi.wumpus.gamelogic.HunterActionsEnum;
 import static com.arnesi.wumpus.utils.UserInterfaceUtils.drawBanner;
 import static com.arnesi.wumpus.utils.UserInterfaceUtils.drawCommands;
 import static com.arnesi.wumpus.utils.UserInterfaceUtils.printString;
 
+import java.util.Scanner;
 
-
+import com.arnesi.wumpus.gamelogic.BoardGame;
+import com.arnesi.wumpus.gamelogic.HunterActionsEnum;
 
 /**
  * Hunt the Wumpus Coding Exercise
@@ -71,10 +69,10 @@ public class WumpusGame {
 							+ " You can't leave the cave.");
 				}
 				break;
-			case "COMMANDS":
+			case "CMD":
 				drawCommands();
 				break;
-			case "INSTRUCTIONS":
+			case "INST":
 				break;
 			case "ENDGAME":
 				printString("Exiting game! goodbye....");
