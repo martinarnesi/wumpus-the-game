@@ -83,8 +83,6 @@ public class WumpusGame {
 				printString("Invalid Command");
 				break;
 			}
-			
-//			board.printBoard();
 		}
 	}
 }

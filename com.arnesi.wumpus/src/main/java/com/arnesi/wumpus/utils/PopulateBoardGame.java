@@ -61,7 +61,7 @@ public class PopulateBoardGame {
 	}
 
 	public List<Hole> setHolePosition(List<Hole> holeList, int holeQuantity, Tile[][] tile) {
-		if (Objects.nonNull(holeList)) {
+		if (Objects.nonNull(holeList) || holeQuantity < 0) {
 			throw new CreationException("Hole creation error.");
 		}
 
@@ -92,6 +92,11 @@ public class PopulateBoardGame {
 			holeList.add(hole);
 			break;
 		default:
+			hole = new Hole(0, 3);
+			tile[hole.getxPosition()][hole.getyPosition()].addEntity(hole);
+			tile[0][2].addEntity(new HoleBreeze());
+			tile[1][3].addEntity(new HoleBreeze());
+			holeList.add(hole);
 			break;
 		}
 
