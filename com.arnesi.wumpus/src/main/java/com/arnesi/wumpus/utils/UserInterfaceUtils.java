@@ -22,7 +22,7 @@ public final class UserInterfaceUtils {
 			+ "|        5. Type EXIT:	  Hunter exit.\n" + "|        6. Type CMD:	  Show this list of actions.\n"
 			+ "|        7. Type INST	  Show game instructions.\n" + "|        8. Type ENDGAME: Quit Game." + "";
 
-	private static final String INSTRUCTIONS = "Hump the Wumpus by Martin Arnesi\r\n"
+	private static final String INSTRUCTIONS = "Humt the Wumpus by Martin Arnesi\r\n"
 			+ "\r\n"
 			+ "You are a daring hunter in search of a gold bar in a dark cavern with 4 x 4 cells.\r\n"
 			+ "\r\n"
