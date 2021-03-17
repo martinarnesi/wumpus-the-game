@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,12 +37,40 @@ class BoardGameTest {
 
 	@Test
 	@DisplayName("Test boardActions() method - Happy Path, take gold and exit cave.")
-	void boardActionsTestHappyPath() {
+	void boardActionsTestHappyPath1() {
 		// Expected actions
 		List<String> expectedActions = Arrays.asList("X=2|Y=0", "X=2|Y=1", "X=1|Y=1", "Gold", "Exit");
 
 		// Crumb road for found gold and exit cave with gold.
 		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		boardGame.boardActions(HunterActionsEnum.TURN_RIGHT);
+		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		boardGame.boardActions(HunterActionsEnum.TURN_LEFT);
+		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		boardGame.boardActions(HunterActionsEnum.TURN_RIGHT);
+		boardGame.boardActions(HunterActionsEnum.TURN_RIGHT);
+		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		boardGame.boardActions(HunterActionsEnum.TURN_RIGHT);
+		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		List<String> performedActions = Arrays.asList(outputStreamCaptor.toString().split(" "));
+
+		boolean actions = checkExpectedActions(expectedActions, performedActions);
+		boolean caveExit = boardGame.boardActions(HunterActionsEnum.EXIT);
+
+		assertTrue(actions);
+		assertTrue(caveExit);
+	}
+	
+	@Test
+	@DisplayName("Test boardActions() method - Happy Path, kill Wumpus, take gold and exit cave.")
+	void boardActionsTestHappyPath2() {
+		// Expected actions
+		List<String> expectedActions = Arrays.asList("X=2|Y=0", "X=2|Y=1", "X=1|Y=1","Wumpus","scream", "Gold", "Exit");
+
+		// Crumb road for found gold and exit cave with gold.
+		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
+		boardGame.boardActions(HunterActionsEnum.SHOOT);
 		boardGame.boardActions(HunterActionsEnum.TURN_RIGHT);
 		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
 		boardGame.boardActions(HunterActionsEnum.TURN_LEFT);
@@ -313,28 +342,6 @@ class BoardGameTest {
 		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
 		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
 
-		List<String> performedActions = Arrays.asList(outputStreamCaptor.toString().split(" "));
-
-		boolean actions = checkExpectedActions(expectedActions, performedActions);
-		boolean caveExit = boardGame.boardActions(HunterActionsEnum.EXIT);
-
-		assertTrue(actions);
-		assertFalse(caveExit);
-	}
-	
-	@Test
-	@DisplayName("Test boardActions() method - Test arrow shoot - NOT IMPLEMENTED")
-	void boardActionsTestArrowShoot() {
-		// Expected actions
-		List<String> expectedActions = Arrays.asList("Not", "implemted");
-
-		// Crumb road for found gold and exit cave with gold.
-		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
-		boardGame.boardActions(HunterActionsEnum.TURN_RIGHT);
-		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
-		boardGame.boardActions(HunterActionsEnum.GO_FORWARD);
-		boardGame.boardActions(HunterActionsEnum.SHOOT);
-		
 		List<String> performedActions = Arrays.asList(outputStreamCaptor.toString().split(" "));
 
 		boolean actions = checkExpectedActions(expectedActions, performedActions);

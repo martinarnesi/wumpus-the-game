@@ -1,7 +1,6 @@
 package com.arnesi.wumpus.model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Tile {
@@ -29,18 +28,17 @@ public class Tile {
 	
 	public void removeEntity(Entity entity) {
 		Entity hunter = null;
-		
-		for (Iterator iterator = this.entity.iterator(); iterator.hasNext();) {
-			Entity ent = (Entity) iterator.next();
-			
-			if(ent instanceof Hunter) {
+
+		for (Entity ent : this.entity) {
+			Entity entTmp = (Entity) ent;
+			if (entTmp instanceof Hunter) {
 				hunter = ent;
 			}
 		}
-		
-		if(hunter != null) {
+
+		if (hunter != null) {
 			this.entity.remove(hunter);
-			
+
 		}
 	}
 

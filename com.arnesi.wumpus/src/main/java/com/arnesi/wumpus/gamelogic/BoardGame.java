@@ -15,6 +15,12 @@ import com.arnesi.wumpus.model.Wumpus;
 import com.arnesi.wumpus.parameters.GameParameters;
 import com.arnesi.wumpus.utils.PopulateBoardGame;
 
+/**
+ * BoardGame class contains the main logic of the game.
+ * 
+ * @author Martin
+ *
+ */
 public class BoardGame {
 
 	private static final int BOARD_WIDTH = GameParameters.PARAMETRISED_BOARD_WIDTH;
@@ -26,6 +32,7 @@ public class BoardGame {
 
 	private final Tile[][] tileCave;
 	private final HunterActions hunterActions;
+	private final ArrowActions arrowActions;
 	private final PopulateBoardGame populateBoardGame;
 
 	private Hunter hunter;
@@ -37,9 +44,14 @@ public class BoardGame {
 	public BoardGame() {
 		this.tileCave = new Tile[BOARD_WIDTH][BOARD_HEIGHT];
 		this.hunterActions = new HunterActions();
+		this.arrowActions = new ArrowActions();
 		this.populateBoardGame = new PopulateBoardGame();
 	}
 
+	/**
+	 * Initializes the game board in a consistent state and adds the entities in
+	 * fixed positions.
+	 */
 	public void initializeBoardGame() {
 		if (populateBoardGame.resetBoardGame(tileCave)) {
 			hunter = populateBoardGame.setHunterInitialPosition(hunter, tileCave);
@@ -52,6 +64,12 @@ public class BoardGame {
 		}
 	}
 
+	/**
+	 * Receives actions from the user and coordinates the game logic.
+	 * 
+	 * @param HunterAction
+	 * @return Game Status
+	 */
 	public Boolean boardActions(HunterActionsEnum hunterAction) {
 		switch (hunterAction) {
 		case GO_FORWARD:
@@ -75,7 +93,8 @@ public class BoardGame {
 			break;
 
 		case SHOOT:
-			printString("Not implemted in this version.");
+			// printString("Not implemted in this version.");
+			printString(arrowActions.shootArrow(hunter, wumpus, BOARD_WIDTH, BOARD_HEIGHT));
 			break;
 
 		case EXIT:

@@ -16,13 +16,20 @@ import com.arnesi.wumpus.model.Tile;
 import com.arnesi.wumpus.model.Wumpus;
 import com.arnesi.wumpus.model.WumpusStench;
 
+/**
+ * Constructor class in charge of initializing the game board
+ * with static locations for the entities in this first version of the game.
+ * 
+ * @author Martin Arnesi
+ *
+ */
 public class PopulateBoardGame {
 
 	public boolean resetBoardGame(Tile[][] tileCave) {
 		for (int i = 0; i < tileCave.length; i++) {
 			Tile[] tiles = tileCave[i];
 			for (int j = 0; j < tiles.length; j++) {
-				if(Objects.nonNull(tiles[j])) {
+				if (Objects.nonNull(tiles[j])) {
 					return false;
 				}
 				Tile tile = new Tile(i, j);
@@ -33,6 +40,13 @@ public class PopulateBoardGame {
 		return true;
 	}
 
+	/**
+	 * Default position of the Hunter
+	 * 
+	 * @param hunter
+	 * @param tile
+	 * @return
+	 */
 	public Hunter setHunterInitialPosition(Hunter hunter, Tile[][] tile) {
 		checkIsEmpty(hunter);
 
@@ -42,6 +56,13 @@ public class PopulateBoardGame {
 		return hunter;
 	}
 
+	/**
+	 * Default position of the CaveExit
+	 * 
+	 * @param caveExit
+	 * @param tile
+	 * @return
+	 */
 	public CaveExit setCaveExitPosition(CaveExit caveExit, Tile[][] tile) {
 		checkIsEmpty(caveExit);
 
@@ -51,6 +72,13 @@ public class PopulateBoardGame {
 		return caveExit;
 	}
 
+	/**
+	 * Default position of the Gold
+	 * 
+	 * @param gold
+	 * @param tile
+	 * @return
+	 */
 	public Gold setGoldPosition(Gold gold, Tile[][] tile) {
 		checkIsEmpty(gold);
 
@@ -60,6 +88,14 @@ public class PopulateBoardGame {
 		return gold;
 	}
 
+	/**
+	 * Default position of the Holes.
+	 * 
+	 * @param holeList
+	 * @param holeQuantity
+	 * @param tile
+	 * @return
+	 */
 	public List<Hole> setHolePosition(List<Hole> holeList, int holeQuantity, Tile[][] tile) {
 		if (Objects.nonNull(holeList) || holeQuantity < 0) {
 			throw new CreationException("Hole creation error.");
@@ -103,6 +139,13 @@ public class PopulateBoardGame {
 		return holeList;
 	}
 
+	/**
+	 * Default position of the Wumpues
+	 * 
+	 * @param wumpus
+	 * @param tile
+	 * @return
+	 */
 	public Wumpus setWumpusPosition(Wumpus wumpus, Tile[][] tile) {
 		checkIsEmpty(wumpus);
 
@@ -115,6 +158,11 @@ public class PopulateBoardGame {
 		return wumpus;
 	}
 
+	/**
+	 * Validate that the entity is not instantiated.
+	 * 
+	 * @param entity
+	 */
 	private void checkIsEmpty(Entity entity) {
 		if (Objects.nonNull(entity)) {
 			throw new CreationException("Entity already exits. Creation error.");

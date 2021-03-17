@@ -23,7 +23,6 @@ import com.arnesi.wumpus.model.Entity;
 import com.arnesi.wumpus.model.Gold;
 import com.arnesi.wumpus.model.Hole;
 import com.arnesi.wumpus.model.Hunter;
-import com.arnesi.wumpus.model.HunterDirectionEnum;
 import com.arnesi.wumpus.model.Tile;
 import com.arnesi.wumpus.model.Wumpus;
 import com.arnesi.wumpus.model.WumpusStench;

@@ -12,10 +12,15 @@ import com.arnesi.wumpus.model.Entity;
 import com.arnesi.wumpus.model.Gold;
 import com.arnesi.wumpus.model.Hole;
 import com.arnesi.wumpus.model.Hunter;
-import com.arnesi.wumpus.model.HunterDirectionEnum;
 import com.arnesi.wumpus.model.Tile;
 import com.arnesi.wumpus.model.Wumpus;
 
+/**
+ * This class contains all actions and events related to the hunter's movement,
+ * state and perceptions.
+ * 
+ * @author Martin Arnesi
+ */
 public class HunterActions {
 	private static final String MOVE = "Moving...";
 	private static final String WALL_SHOCK_PERCEPTION = "Hunter say: I hit the cave wall!!";
@@ -24,6 +29,15 @@ public class HunterActions {
 	private static final String ENTITY_ERROR = "Entity Exception Error.";
 	private static final String BOARD_ERROR = "Board dimentions Error.";
 
+	/**
+	 * This method is responsible for coordinating the hunter's forward movement. It
+	 * also verifies collisions against walls.
+	 * 
+	 * @param hunter
+	 * @param boardWidth
+	 * @param boardHeight
+	 * @return String with the movement result
+	 */
 	public String moveHunterForward(Hunter hunter, int boardWidth, int boardHeight) {
 		if (Objects.isNull(hunter)) {
 			throw new InvalidEntityException(HUNTER_ERROR);
@@ -32,7 +46,7 @@ public class HunterActions {
 		if (boardWidth <= 1 || boardHeight <= 1) {
 			throw new InvalidCavePositionException(BOARD_ERROR);
 		}
-		
+
 		if (hunter.getxPosition() < 0 || hunter.getyPosition() < 0) {
 			throw new InvalidCavePositionException(BOARD_ERROR);
 		}
@@ -75,11 +89,18 @@ public class HunterActions {
 		return INVALID;
 	}
 
+	/**
+	 * This method is responsible for rotating the hunter, both to the left and to
+	 * the right.
+	 * 
+	 * @param hunterAction
+	 * @param hunter
+	 */
 	public void turnHunter(HunterActionsEnum hunterAction, Hunter hunter) {
 		if (Objects.isNull(hunterAction) || Objects.isNull(hunter)) {
 			throw new InvalidEntityException(HUNTER_ERROR);
 		}
-		
+
 		switch (hunterAction) {
 		case TURN_LEFT:
 			switch (hunter.getDirection()) {
@@ -116,6 +137,15 @@ public class HunterActions {
 		}
 	}
 
+	/**
+	 * Verify all the necessary conditions that the hunter needs to successfully
+	 * leave the cave.
+	 * 
+	 * @param hunter
+	 * @param tileCave
+	 * @param caveExit
+	 * @return
+	 */
 	public HunterActionsEnum hunterExitCave(Hunter hunter, Tile[][] tileCave, CaveExit caveExit) {
 		if (Objects.isNull(hunter) || Objects.isNull(caveExit)) {
 			throw new InvalidEntityException(ENTITY_ERROR);
@@ -136,12 +166,21 @@ public class HunterActions {
 		}
 	}
 
+	/**
+	 * Updates the list of hunter's perceptions
+	 * 
+	 * @param hunter
+	 * @param perceptions
+	 * @param wumpus
+	 * @param gold
+	 * @return
+	 */
 	public Hunter updateHunterStatus(Hunter hunter, List<Entity> perceptions, Wumpus wumpus, Gold gold) {
 		if (Objects.isNull(hunter) || Objects.isNull(perceptions) || Objects.isNull(wumpus) || Objects.isNull(gold)) {
 			throw new InvalidEntityException(ENTITY_ERROR);
 		}
 
-		if (perceptions.contains(wumpus)) {
+		if (perceptions.contains(wumpus) && wumpus.isAlive()) {
 			hunter.setAlive(false);
 		}
 
@@ -156,11 +195,18 @@ public class HunterActions {
 		return hunter;
 	}
 
+	/**
+	 * Displays the list of the hunter's perceptions
+	 * 
+	 * @param hunter
+	 * @param tileCave
+	 * @return
+	 */
 	public List<Entity> hunterPerception(Hunter hunter, Tile[][] tileCave) {
 		if (Objects.isNull(hunter)) {
 			throw new InvalidEntityException(HUNTER_ERROR);
 		}
-		
+
 		if (hunter.getxPosition() < 0 || hunter.getyPosition() < 0) {
 			throw new InvalidCavePositionException(BOARD_ERROR);
 		}

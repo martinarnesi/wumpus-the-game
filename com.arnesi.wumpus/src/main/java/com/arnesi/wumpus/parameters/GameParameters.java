@@ -7,7 +7,7 @@ public final class GameParameters {
 	public static final int PARAMETRISED_BOARD_WIDTH= 4;
 	public static final int PARAMETRISED_BOARD_HEIGHT= 4;
 	public static final int PARAMETRISED_HOLES_QUANTITY = 3;
-
+	
     /* 
 	 * Game Entities 
 	 */
@@ -23,6 +23,4 @@ public final class GameParameters {
 		CAVE_EXIT,
 		EMPTY
 	}
-
-    private GameParameters() {}
 }

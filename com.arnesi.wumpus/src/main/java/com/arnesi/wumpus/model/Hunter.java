@@ -1,5 +1,6 @@
 package com.arnesi.wumpus.model;
 
+import com.arnesi.wumpus.gamelogic.HunterDirectionEnum;
 import com.arnesi.wumpus.parameters.GameParameters.EntityType;
 
 public class Hunter extends Entity {

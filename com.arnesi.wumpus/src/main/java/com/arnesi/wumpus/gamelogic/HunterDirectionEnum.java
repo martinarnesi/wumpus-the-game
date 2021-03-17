@@ -1,4 +1,4 @@
-package com.arnesi.wumpus.model;
+package com.arnesi.wumpus.gamelogic;
 
 public enum HunterDirectionEnum {
 	UP,
