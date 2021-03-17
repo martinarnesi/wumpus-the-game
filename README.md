@@ -3,7 +3,7 @@
 #### 1) Using your IDE (You can clone this project and run the game from the class **WumpusGame** (main class) RUN AS --> JAVA APPLICATION.
 
 
-#### 2) You can download the AmarisFinal.jar and run it from the console (Jar compile with jdk-11.0.7) Se Below
+#### 2) You can download the AmarisFinal.jar and run it from the console (Jar compile with jdk-11.0.7) Please see below
 ```
 C:\Users\jdk-11.0.7\bin>java -version
 java version "11.0.7" 2020-04-14 LTS
