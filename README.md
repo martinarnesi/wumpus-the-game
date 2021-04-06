@@ -1,9 +1,9 @@
-## Wumpus Game Exam - How to run the game
+## Hunt the Wumpus - My Java version of "Hunt the Wumpus", a text-based adventure game developed by Gregory Yob in 1973
 
+### How to run the game
 #### 1) Using your IDE (You can clone this project and run the game from the class **WumpusGame** (main class) RUN AS --> JAVA APPLICATION.
 
-
-#### 2) You can download the AmarisFinal.jar and run it from the console (Jar compile with jdk-11.0.7) Please see below
+#### 2) mvn clean compile, generate the artifact and run it in the console.
 ```
 C:\Users\jdk-11.0.7\bin>java -version
 java version "11.0.7" 2020-04-14 LTS
@@ -11,7 +11,7 @@ Java(TM) SE Runtime Environment 18.9 (build 11.0.7+8-LTS)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.7+8-LTS, mixed mode)
 
 
-C:\Users\Martin\Sandbox\jdk-11.0.7\bin>java -jar AmarisFinal.jar
+C:\Users\Martin\Sandbox\jdk-11.0.7\bin>java -jar Wumpus.jar
 
 / \ /|/ \ /\/ \  /|/__ __\  /__ __\/ \ /|/  __/  / \  /|/ \ /\/ \__/|/  __\/ \ /\/ ___\
 | |_||| | ||| |\ ||  / \      / \  | |_|||  \    | |  ||| | ||| |\/|||  \/|| | |||    \
