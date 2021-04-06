@@ -11,8 +11,8 @@ import com.arnesi.wumpus.gamelogic.BoardGame;
 import com.arnesi.wumpus.gamelogic.HunterActionsEnum;
 
 /**
- * Hunt the Wumpus v1.0 - Airliquide Healthcare Evaluation
- * @author Martin Arnesi - March 2021 - Rosario - SF - Argentina
+ * Hunt the Wumpus v1.0
+ * @author Martin Arnesi
  *
  */
 public class WumpusGame {
