@@ -1,5 +1,6 @@
-## Hunt the Wumpus - My Java version of "Hunt the Wumpus", a text-based adventure game developed by Gregory Yob in 1973
-
+## Hunt the Wumpus - My Java version of "Hunt the Wumpus"
+## A text-based adventure game developed by Gregory Yob in 1973
+![](WUMPUS.png)
 ### How to run the game
 #### 1) Using your IDE (You can clone this project and run the game from the class **WumpusGame** (main class) RUN AS --> JAVA APPLICATION.
 
