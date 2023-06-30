@@ -1,10 +1,8 @@
 ## Hunt the Wumpus - My Java version of "Hunt the Wumpus"
 ## A text-based adventure game developed by Gregory Yob in 1973
 ![](WUMPUS.png)
-### How to run the game
-#### 1) Using your IDE (You can clone this project and run the game from the class **WumpusGame** (main class) RUN AS --> JAVA APPLICATION.
-
-#### 2) mvn clean compile, generate the artifact and run it in the console.
+### Run the game
+#### From main class **WumpusGame** (main class) and run it in the console.
 ```
 C:\Users\jdk-11.0.7\bin>java -version
 java version "11.0.7" 2020-04-14 LTS
@@ -30,5 +28,6 @@ C:\Users\Martin\Sandbox\jdk-11.0.7\bin>java -jar Wumpus.jar
 |        7. Type INST     Show game instructions.
 |        8. Type ENDGAME: Quit Game.
 $> inst
-Humt the Wumpus by Martin Arnesi
-```
+
+
+
